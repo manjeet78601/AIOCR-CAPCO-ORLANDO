@@ -1,0 +1,43 @@
+.doc-col {
+    width: 50%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.doc-wrapper {
+    padding: 5%;
+}
+
+.text-box {
+    background: #fff;
+    padding: 20px;
+    overflow: auto;
+    max-height: 500px;
+}
+
+.mat-radio-button {
+    width: auto;
+}
+
+.alert {
+    font-size: 12px;
+    color: #f44336;
+    max-width: 300px;
+}
+
+.mat-table {
+    width: 100%;
+}
+
+.zoom-div {
+    display: block;
+    padding-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+img.zoom-img {
+    max-width: 900px;
+}

@@ -1,0 +1,30 @@
+<div class="nav-wrapper">
+  <div class="toolbar">
+    <mat-toolbar color="info">
+
+      <div class="container">
+        <img class="capco_logo"src="assets/images/group-4.png"  />
+        <span routerLink="/content/tasks">
+          <button mat-button class="nav-button project">
+          {{ 'AI-OCR  Correction Services' }}
+          </button>
+        </span>
+
+        <span *ngIf="roleID == 1" class="d-none d-md-inline my-2 my-md-0 mr-md-3 admin cvb">
+          <button mat-button class="nav-button cvb" [matMenuTriggerFor]="menu">Admin</button>
+            <mat-menu #menu="matMenu">
+              <button *ngFor="let item of navItems" [routerLink]="[item.link]" routerLinkActive="active"
+            mat-menu-item>{{ item.title }}</button>
+            </mat-menu>
+        </span>
+
+        <span routerLink="/">
+          <button mat-button class="nav-button logout">
+            {{ 'Logout' }}
+          </button>
+        </span>
+
+      </div>
+    </mat-toolbar>
+  </div>
+</div>

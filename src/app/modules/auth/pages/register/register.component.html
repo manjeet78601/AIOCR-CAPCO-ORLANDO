@@ -1,0 +1,138 @@
+<section id="content" >
+  <div class="wrapper enclose">
+  <div class="container-login">
+
+ <ng-template #template1>
+    <form class="login-form1 validate-form">
+        <span class="login-form1-title" >
+       </span>
+        <div class="wrap-input12">
+<div  class="alert alert-danger fa-text-width" *ngIf="errorMessage">
+{{errorMessage}}
+  </div></div>
+  <div class="wrap-input12" >
+      <p style="margin-top:10px;"><img src="../../assets/images/group_alert.svg"></p>
+     <span class="symbol-input">
+     </span>
+   </div>
+   <div  class="container-login-form-btn12">
+      <button id="btn12" class="login-form-btn12 setting" (click) ="close()" >
+        Ok
+      </button></div></form>
+</ng-template>
+
+  <div class="wrap-login">
+
+  <div class="login-pic">
+       <img src="../../assets/images/group.svg" alt="IMG">
+
+        <p>{{header.heading}}</p>
+        <p class="top">{{header.heading1}}</p>
+        <p>{{header.heading2}}</p>
+
+        <div class="register-version">
+            <div class="auth-container">
+                <p> ver. {{version}} {{build}}</p>
+              </div>
+
+        </div>
+
+   </div>
+
+
+ <fieldset class="form-group">
+        <form [formGroup]="registrationForm" #regisrtrationForm="ngForm"  (ngSubmit)="registrationForm.valid && submitRegistration(registrationForm.value)" novalidate class="login-form validate-form">
+       <!-- {{error}} -->
+       <span class="login-form-title">
+          Sign-Up
+        </span>
+        <div class="wrap-input" >
+          <div class="form-Group" style="color: red">
+
+ <input type="text" class="form-control" [placeholder]="'Firstname'" formControlName="Firstname">
+        <div class='form-text error' *ngIf='registrationForm.controls.Firstname.touched'>
+          <div *ngIf="registrationForm.controls.Firstname.hasError('required')">First name is required.</div>
+        </div>
+          </div>
+          </div>
+          <div class="wrap-input" >
+              <div class="form-Group">
+
+  <input type="text" class="form-control" [placeholder]="'Lastname'" formControlName="Lastname">
+        <div class='form-text error' *ngIf='registrationForm.controls.Lastname.touched'>
+          <div *ngIf="registrationForm.controls.Lastname.hasError('required')">Last name is required.</div>
+        </div>
+
+              </div>
+              </div>
+              <div class="wrap-input" >
+                  <div class="form-Group">
+
+                    <input formControlName="Email"  type="text" class="form-control" id="email" placeholder="Email">
+                  </div>
+                  </div>
+              <div class="wrap-input" >
+                  <div class="form-Group">
+
+
+ <input type="password" class="form-control" [placeholder]="'Password'" minlength='6' formControlName="password">
+      <div class='form-text error' *ngIf="registrationForm.controls.password.touched">
+        <div *ngIf="registrationForm.controls.password.hasError('required')">Password is required.</div>
+        <div *ngIf="registrationForm.controls.password.hasError('minlength')">Password isn't long enough.</div>
+      </div>
+
+                  </div>
+                  </div>
+                  <div class="wrap-input" >
+                      <div class="form-Group">
+
+                    <input type="password" class="form-control" [placeholder]="'Confirm Password'" formControlName="confirmPassword">
+      <div class='form-text error' *ngIf="registrationForm.controls.confirmPassword.touched">
+        <div *ngIf="registrationForm.hasError('mismatchedPasswords')">Passwords do not match.</div>
+      </div>
+      </div>
+                      </div>
+                      <div class="container-login-form-btn">
+                          <button type="submit" class="login-form-btn" [disabled]="!registrationForm.valid">
+                            <span >Register</span>
+
+                          </button>
+                          <div class="wrap-input">
+                          <p class="text-center">
+                            <small>Already have an account yet ?&nbsp;<a [routerLink]="['/auth/login']">Login</a></small>
+                          </p>
+                          </div>
+
+                    </div>
+
+      </form>
+
+      <div></div>
+
+      </fieldset>
+     <ng-template #template >
+                  <form  class="login-form1 validate-form">
+                    <span class="login-form1-title" >
+                   </span>
+                    <div class="wrap-input1" >
+                     <h3 style="text-align: center">Congratulations</h3>
+                      <span class="focus-input"></span>
+                    </div>
+                    <div class="wrap-input1" >
+                       <p><img src="../../assets/images/group-2.svg"></p>
+                      <span class="symbol-input">
+                      </span>
+                    </div>
+                    <div class="wrap-input1">
+                      <p class="You-have-been-succes">You have been successfully <br>registered</p></div>
+                    <div  class="container-login-form-btn12">
+                      <button id="btn12" class="login-form-btn12" (click) ="close()" >
+                              <small ><a [routerLink]="['/auth/login']"  class="text-center1">Continue</a></small>
+                      </button>
+</div>
+
+
+            </form>
+
+</ng-template>
+

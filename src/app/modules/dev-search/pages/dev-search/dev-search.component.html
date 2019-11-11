@@ -1,0 +1,68 @@
+<ng-container *ngIf="isLoading">
+  <app-loading></app-loading>
+</ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="screenHeading">
+      <!-- <mat-icon  style ="background-color: #fff">perm_media</mat-icon> -->
+      <h1 class="mat-h1"> Dev Document Viewer</h1>
+    </div>
+  </div></div></div>
+  <div class="wrapper tab">
+
+    <ng-container>
+
+      <div class="doc-col">
+        <h4 class='mat-h4'>fs_id: {{fsId}}</h4>
+        <h4 class='mat-h4'>filename: {{filename}}</h4>
+        <div class="zoom-div" *ngIf="urlPng">
+          <button mat-raised-button color="primary" (click)="imgZoom()">
+              <mat-icon [innerHtml]="imgClicked ? 'zoom_out' : 'zoom_in'"></mat-icon><span [innerHtml]="imgClicked ? 'Zoom out' : 'Zoom in'"></span>
+          </button>
+        </div>
+        <img *ngIf="urlPng" class="zoom-img" [src]="urlPng" alt="Document image" [ngStyle]="!imgClicked && {'width': '400px'}">
+      </div>
+
+    </ng-container>
+    </div>
+
+
+  <div class="wrapper">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>Index</th>
+        <td mat-cell *matCellDef="let data; let i = index;">{{i + 1}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fs_id">
+        <th mat-header-cell *matHeaderCellDef>fs_id</th>
+        <td mat-cell  *matCellDef="let data">{{data.fs_id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="filename">
+        <th mat-header-cell *matHeaderCellDef  class="table-even">File Name</th>
+        <td mat-cell class="table-even" *matCellDef="let data">{{data.filename}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="button">
+          <th mat-header-cell *matHeaderCellDef class="table-even"></th>
+          <td mat-cell *matCellDef="let data" class="table-even"> <button mat-raised-button color="primary"
+            class="submit-btn float-btn"(click)="selectId(data)" >View</button></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnHeaders"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnHeaders;"></tr>
+    </table>
+  </div>
+</ng-container>
+<div [ngClass]="!isLoading ? 'wrapper' : 'hide'">
+  <mat-paginator
+    #paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 30]"
+    >
+  </mat-paginator>
+</div>

@@ -1,0 +1,110 @@
+.doc-col-m {
+    width: 70%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.doc-col-s {
+    width: 30%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.sticky-col {
+    position: sticky;
+    top: 70px;
+}
+
+.doc-wrapper {
+    padding: 1.5%;
+}
+
+.text-box {
+    background: #fff;
+    padding: 10px;
+    overflow: auto;
+    max-height: 500px;
+    margin-left: 5px;
+}
+
+.mat-radio-group {
+    margin-bottom: 20px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rbtn-pass {
+    background-color: rgb(207, 235, 166);
+}
+
+.rbtn-pass-typos {
+    background-color: rgb(207, 235, 166);
+}
+
+.rbtn-fail {
+    background-color: rgb(231, 173, 173);
+}
+
+.rbtn-na {
+    background-color: rgb(161, 160, 160);
+}
+
+.mat-radio-button {
+    margin : 0;
+    padding: 10px 10px 4px 8px;
+    width: auto;
+    border-radius: 20px;
+}
+
+.alert {
+    font-size: 12px;
+    color: #f44336;
+    max-width: 300px;
+}
+
+.mat-table {
+    width: 100%;
+}
+
+.exit {
+    margin-left: 20px;
+}
+
+.submit {
+    float: right;
+    margin-right: 20px;
+}
+
+.pdf-container {
+    margin-right: 2px;
+    float: left;
+}
+
+.png {
+    display:block;
+    margin:auto;
+    margin-bottom: 5px;
+}
+
+.zoom-div {
+    display: block;
+    padding-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+img.zoom-img {
+    max-width: 900px;
+}
+
+button {
+    margin-bottom: 10px;
+}
+
+mat-form-field {
+    margin-left: 30px;
+    width: 90%;
+}

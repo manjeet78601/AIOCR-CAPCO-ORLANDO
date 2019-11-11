@@ -1,0 +1,129 @@
+<div class="wrapper">
+  <div class="low">
+    <div class="row">
+      <div class=col-md-12>
+        <div class="screenHeading">
+    <!-- <mat-icon style="color:white">supervisor_account </mat-icon> -->
+    <h1 class="mat-h1">User List</h1>
+  </div></div>
+</div>
+<mat-tab-group class="tab">
+  <mat-tab  label="All accounts">
+    <table  mat-table [dataSource]="userData" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id</th>
+        <td mat-cell *matCellDef="let user"> {{user.ID}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let user"> {{user.Firstname}} {{user.Lastname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let user"> {{user.Role_ID}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="button">
+        <th mat-header-cell *matHeaderCellDef>Change status</th>
+        <td mat-cell *matCellDef="let user">
+          <button (click)="setUsersToggle(user.ID, user.Enabled, $event)" mat-raised-button class='mat-primary' [innerHTML]="
+          user.Enabled == '1' ? 'Disable account' : 'Enable account'">
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator
+      #allPaginator
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 30]"
+    >
+    </mat-paginator>
+  </mat-tab>
+  <mat-tab label="Enabled accounts">
+    <table mat-table [dataSource]="enabledUserData" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id</th>
+        <td mat-cell *matCellDef="let user"> {{user.ID}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef  class="table-even">Name</th>
+        <td mat-cell *matCellDef="let user"  class="table-even"> {{user.Firstname}} {{user.Lastname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let user"> {{user.Role_ID}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="button">
+        <th mat-header-cell *matHeaderCellDef class="table-even">Change status</th>
+        <td mat-cell *matCellDef="let user" class="table-even">
+            <button (click)="setUsersToggle(user.ID, user.Enabled, $event)" mat-raised-button class='mat-primary'>
+              Disable account
+            </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator
+      #enabledPaginator
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 30]"
+    >
+    </mat-paginator>
+  </mat-tab>
+  <mat-tab label="Disabled accounts">
+    <table mat-table [dataSource]="disabledUserData" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id</th>
+        <td mat-cell *matCellDef="let user"> {{user.ID}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef  class="table-even">Name</th>
+        <td mat-cell *matCellDef="let user"  class="table-even"> {{user.Firstname}} {{user.Lastname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let user"> {{user.Role_ID}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="button">
+        <th mat-header-cell *matHeaderCellDef class="table-even">Change status</th>
+        <td mat-cell *matCellDef="let user" class="table-even">
+            <button (click)="setUsersToggle(user.ID, user.Enabled, $event)" mat-raised-button class='mat-primary'>
+              Enable account
+            </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator
+      #disabledPaginator
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 30]"
+    >
+    </mat-paginator>
+  </mat-tab>
+</mat-tab-group>
+<div class="sub-div">
+    <button mat-raised-button color="primary" (click)="sendUsers()">Update users</button>
+  </div>
+</div>

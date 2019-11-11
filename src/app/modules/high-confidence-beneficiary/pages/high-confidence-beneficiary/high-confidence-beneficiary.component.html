@@ -1,0 +1,6 @@
+<ng-container *ngIf="!highIsSelected">
+  <app-high-confidence-beneficiary-listing></app-high-confidence-beneficiary-listing>
+</ng-container>
+<ng-container *ngIf="highIsSelected">
+  <app-high-confidence-beneficiary-display></app-high-confidence-beneficiary-display>
+</ng-container>

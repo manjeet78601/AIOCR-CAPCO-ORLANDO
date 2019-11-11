@@ -1,0 +1,6 @@
+<ng-container *ngIf="!trustIsSelected">
+  <app-trust-documents-listing></app-trust-documents-listing>
+</ng-container>
+<ng-container *ngIf="trustIsSelected">
+  <app-trust-documents-display></app-trust-documents-display>
+</ng-container>ng serve

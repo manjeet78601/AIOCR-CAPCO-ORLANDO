@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+@import './theme.scss';
+@import '~@angular/material/theming';
+@import 'app/modules/correction/pages/correction/correction.component.scss';
+@import 'app/modules/auth/pages/login/login.component.scss';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+.mat-h1{
+  color:#fff;
+
+
+}
+.tab {
+  background-color:#fff !important;
+  width:100%;
+}
+/*
+:root {
+    --main-text-color: #555555;
+    --light-text-color: #cccccc;
+    --primary-color: #{ mat-color($candy-app-primary) };
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.5px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+html {
+    // height: 100vh;
+    background: #e0e0e0;
+    color: var(--main-text-color);
+}
+
+body {
+    min-height: 95vh;
+    margin-bottom: 0;
+}
+
+.row, .column {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.space {
+    justify-content: space-around;
+}
+.center-x {
+    justify-content: center;
+}
+.center-y {
+    align-items: center;
+}
+.body-wrapper {
+    background: white;
+    min-height: 100vh;
+    max-width: 1236px;
+    margin: auto;
+}
+ */
+
+.my-light-theme {
+    height: 100vh;
+}

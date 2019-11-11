@@ -1,0 +1,89 @@
+<section id="content" >
+    <div class="wrapper enclose">
+    <div class="container-login">
+
+      <div class="wrap-login">
+          <!-- <div [hidden]="!error" class="alert alert-danger">
+              {{error}}
+            </div> -->
+        <div class="login-pic">
+          <img src="../../assets/images/group.svg" alt="IMG">
+        <p>{{header.heading}}</p>
+        <p class="top">{{header.heading1}}</p>
+        <p>{{header.heading2}}</p>
+<div class="login-version">
+    <div class="auth-container">
+        <p> ver.{{version}} {{build}}</p>
+      </div>
+
+</div>
+
+        </div>
+
+  <fieldset [disabled]="isLoading">
+        <form [formGroup]="loginForm" class="login-form validate-form">
+
+          <span class="login-form-title">
+           Login
+          </span>
+          <div class="wrap-input" >
+
+
+          <input type="text" class="form-control" [placeholder]="'Email'" formControlName="email">
+            <app-control-messages [control]="f['email']"></app-control-messages>
+                </div>
+
+          <div class="wrap-input" >
+          <input type="password" class="form-control" [placeholder]="'Password'" formControlName="password">
+            <app-control-messages [control]="f['password']"></app-control-messages>
+
+          </div>
+          <div class="container-login-form-btn">
+            <button class="login-form-btn" [disabled]="loginForm.invalid" (click)="login()">
+               <span [hidden]="isLoading">Submit</span>
+            <span [hidden]="!isLoading">
+              <fa-icon icon="asterisk" size="3x" [spin]="true"></fa-icon>
+            </span>
+            </button>
+
+            <div class = "wrap-input">
+              <p class="text-center">
+                <small> Don't have an account yet ?&nbsp; <a [routerLink]="['/auth/register']">Sign Up</a> </small>
+               </p>
+            </div>
+          </div>
+        </form></fieldset>
+      </div>
+    </div>
+  </div>
+
+
+<!--<div [hidden]="!error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <fieldset [disabled]="isLoading">
+    <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label class="d-block">
+            <input type="text" class="form-control" [placeholder]="'Email'" formControlName="email">
+            <app-control-messages [control]="f['email']"></app-control-messages>
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="d-block">
+            <input type="password" class="form-control" [placeholder]="'Password'" formControlName="password">
+            <app-control-messages [control]="f['password']"></app-control-messages>
+          </label>
+        </div>
+        <div class="form-group">
+          <button (click)="login()" class="btn btn-primary btn-block btn-raised" [disabled]="loginForm.invalid">
+            <span [hidden]="isLoading">Submit</span>
+            <span [hidden]="!isLoading">
+              <fa-icon icon="asterisk" size="3x" [spin]="true"></fa-icon>
+            </span>
+          </button>
+        </div>
+        <a [routerLink]="['/auth/register']">Don't have an account? Account Registration</a>
+    </form>
+  </fieldset-->

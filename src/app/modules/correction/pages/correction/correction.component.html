@@ -1,0 +1,92 @@
+<ng-container *ngIf="!loading">
+  <div class="low">
+      <div class="">
+        <div class="row">
+          <div class="col-md-12">
+        <!-- <div class=""> -->
+        <div class="screenHeading">
+          <p>AI-OCR Correction Service</p>
+        </div>
+        </div></div>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                  <!-- <div class="screenHeading">
+                    <p>AI-OCR Correction Service</p>
+                  </div> -->
+                  <div class="screenSection">
+                    <div class="scan">
+
+                      <h2 class="mat-h2">Our Scan:</h2>
+                      <img *ngIf="imgURL" [src]="imgURL" alt="OCR Captured Box"
+                     [ngStyle]="{'width.px': getImgWidth()}">
+                     <h2 class="mat-h2">OCR Text:</h2>
+                     <span class="mat-h3">{{ocrText}}</span>
+
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+        <div class="col-md-6">
+           <div class="screenHeading2">
+
+
+
+        <div class="wrapper correction topac">
+          <form [formGroup]="queueForm">
+
+
+                <div class="optionButtons">
+
+                <h2 class="mat-h2">Is this text correct or should it be discarded?</h2>
+                <div class="radio-button-primary">
+                  <mat-radio-group formControlName="isConcur" class="btn btn-outline-secondary" >
+                    <mat-radio-button value="true">Yes</mat-radio-button>
+                    <!-- <mat-radio-button value="false" (change)="editCorrectedInput()">No</mat-radio-button> -->
+                    <mat-radio-button value="false">No</mat-radio-button>
+                    <mat-radio-button value="discard">Discard</mat-radio-button>
+                  </mat-radio-group>
+               </div>
+                <mat-form-field *ngIf="queueForm.value.isConcur === 'false'">
+                  <input #correctedInput matInput placeholder="Please enter the correct text:"
+                  formControlName="correctedInput" tabindex="1" autofocus />
+                </mat-form-field>
+                <ng-container *ngIf="queueForm.value.isConcur === 'true' || queueForm.value.isConcur === 'false'">
+                  <h3 class="mat-h3">Enter Quality for ML Training:</h3>
+                  <!-- <mat-slider thumbLabel formControlName="weight" min="0" max="1" step="0.1" ></mat-slider> -->
+                  <mat-radio-group formControlName="weight">
+                    <mat-radio-button value="1" class="weight-radio-btn">
+                      <span class="weight-number">1</span>
+                      <!-- <span class="weight-explanation">Not at all confident</span> -->
+                    </mat-radio-button>
+                    <mat-radio-button value="2" class="weight-radio-btn">
+                      <span class="weight-number">2</span>
+                      <!-- <span class="weight-explanation">Less confident</span> -->
+                    </mat-radio-button>
+                    <mat-radio-button value="3" class="weight-radio-btn">
+                      <span class="weight-number">3</span>
+                      <!-- <span class="weight-explanation">Neutral</span> -->
+                    </mat-radio-button>
+                    <mat-radio-button value="4" class="weight-radio-btn">
+                      <span class="weight-number">4</span>
+                      <!-- span class="weight-explanation">Somewhat Confident</span> -->
+                    </mat-radio-button>
+                    <mat-radio-button value="5" class="weight-radio-btn">
+                      <span class="weight-number">5</span>
+                      <!-- <span class="weight-explanation">Very Confident</span> -->
+                    </mat-radio-button>
+                  </mat-radio-group>
+                  <!-- <h3 class="mat-h3">Weight: {{queueForm.value.weight}}</h3> -->
+                </ng-container>
+                <div class="btn-group">
+                <button mat-raised-button color="primary" class="submit-btn" (click)="submit()" [disabled]="!formIsValid">Submit</button>
+                <button mat-raised-button color="primary" class="submit-btn" (click)="redirect()">Cancel</button>
+      </div>
+            </div></form></div></div></div></div></div>
+
+          </div>
+        </ng-container>

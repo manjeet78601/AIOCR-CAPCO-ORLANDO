@@ -1,0 +1,48 @@
+.doc-col {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.mat-table {
+    max-height: 10px;
+    width: 100%;
+    overflow: auto;
+}
+
+.mat-row:nth-child(even){
+    background-color:lightblue;
+}
+
+.mat-header-row {
+    background-color: lightgrey;
+}
+.tab {
+  background-color:#fff !important;
+  width:100%;
+}
+
+mat-icon {
+    margin-right: 10px;
+}
+
+.mat-paginator {
+    width: 100%;
+    background-color: transparent;
+}
+
+.doc-col {
+    text-align: center;
+}
+
+.zoom-div {
+    display: block;
+    padding-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+img.zoom-img {
+    max-width: 900px;
+}

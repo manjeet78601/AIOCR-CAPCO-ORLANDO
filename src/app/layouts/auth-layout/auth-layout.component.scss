@@ -1,0 +1,79 @@
+.full-width-image {
+  min-height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #ffffff url('../../../assets/images/getty-images-517629594-b-w.png') no-repeat;
+  //background: url("assets/images/bbtlogo-main-tag-vert.jpg") no-repeat center center fixed;
+ // background-size: cover;
+ background-size: 100% 100%;
+  }
+
+.auth-container {
+  position:fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.auth-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+
+}
+
+.card {
+
+  width:650px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.login-pic {
+  width: 316px;
+ background-color: #000000;
+
+
+}
+.login-form {
+  width: 320px;
+  opacity: 0.95;
+  background-color: #ffffff;
+}
+.container-login {
+	background-size: 100% 100%;
+}
+  .login-pic {
+    display: none;
+  }
+  .wrap-login {
+    width: 650px;
+    background: #fff;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+  }

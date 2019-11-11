@@ -1,0 +1,65 @@
+<ng-container *ngIf="!loading">
+  <div class="wrapper">
+    <div class="header-row row center-x center-y">
+      <mat-icon>search</mat-icon>
+      <h1 class="mat-h1">Trust Documents Checking Service</h1>
+    </div>
+  </div>
+  <div class="gray doc-wrapper">
+      <div class="doc-col-m">
+          <h2 class='mat-h2'>Document:</h2>
+          <!-- <img [src]="resultData.pdf" alt="Document image"> -->
+          <div class="pdf-container">
+            <pdf-viewer *ngIf="urlPDF" [src]="urlPDF"
+            [fit-to-page]="false"
+            [original-size]="false"
+            [autoresize]="true"
+            style="width: 400px;"
+></pdf-viewer>
+            <ng-container *ngIf="base64PNGs && !urlPDF">
+              <div class="zoom-div">
+                <button mat-raised-button color="primary" (click)="imgZoom()">
+                  <mat-icon [innerHtml]="imgClicked ? 'zoom_out' : 'zoom_in'"></mat-icon><span [innerHtml]="imgClicked ? 'Zoom out' : 'Zoom in'"></span>
+                </button>
+              </div>
+              <div *ngFor="let image of base64PNGs">
+                <img class="png zoom-img" [src]="displayImage(image)" [ngStyle]="!imgClicked && {'width': '400px'}"/>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+    <div class="doc-col-s sticky-col">
+      <h2 class='mat-h2'>JSON:</h2>
+      <mat-slide-toggle class="show-detailed" [checked]="isDetailed" [(ngModel)]="isDetailed">Show detailed</mat-slide-toggle>
+      <div class="text-box">
+        <ngx-json-viewer *ngIf="!isDetailed" [json]="simplifiedJson"></ngx-json-viewer>
+        <ngx-json-viewer *ngIf="isDetailed" [json]="resultJson"></ngx-json-viewer>
+      </div>
+      <div class="btn-div">
+        <form [formGroup]="resultsCheckingForm">
+          <mat-radio-group formControlName="jsonRating">
+            <mat-radio-button value="1" class="weight-radio-btn rbtn-pass">
+              Pass
+            </mat-radio-button>
+            <mat-radio-button value="2" class="weight-radio-btn rbtn-pass-typos">
+              Pass with typo(s)
+            </mat-radio-button>
+            <mat-radio-button value="3" class="weight-radio-btn rbtn-fail">
+              Fail
+            </mat-radio-button>
+            <mat-radio-button value="4" class="weight-radio-btn rbtn-na">
+              N/A
+            </mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field *ngIf="resultsCheckingForm.value.jsonRating == 3">
+            <input #failReasonsInput matInput placeholder="Please enter fail reasons:"
+            formControlName="failReasons" tabindex="1" autofocus />
+          </mat-form-field>
+          <button mat-raised-button color="basic" class="submit-btn float-btn exit" (click)="exit()">Back</button>
+          <button mat-raised-button color="primary" class="submit-btn float-btn submit" (click)="submit()" [disabled]="!resultsCheckingFormIsValid">Submit</button>
+          <span *ngIf="formSubmitted" class="alert" [innerHTML]="submitSuccess ? 'Submitted.' : 'Error'"></span>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-container>

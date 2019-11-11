@@ -1,0 +1,71 @@
+.mat-toolbar {
+    width: 100vw;
+}
+.mat-toolbar a {
+    width: 100%;
+}
+
+.cvb{
+  color:red  !important;
+}
+
+mat-toolbar {
+    position: fixed;
+    width: 100vw;
+    z-index: 99;
+}
+
+.toolbar {
+    width: 100vw;
+}
+
+mat-toolbar-row {
+  background: #ffff;
+    display: block;
+    padding-top: 10px;
+    max-width: 1250px;
+    margin: auto;
+}
+
+mat-toolbar-row .capco_logo { float:left }
+
+.project {
+    margin-left: 10px;
+    //width: 100px
+}
+
+button:focus{
+    outline:none !important;
+}
+
+.home { cursor: pointer; }
+
+.logout {
+    float: right;
+    margin-top: 5px;
+}
+
+.nav-button {
+    width: 100px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 20px;
+    color: #595959;
+}
+
+.mat-button-focus-overlay {
+    background-color: transparent!important;
+}
+
+.nav-wrapper {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    background-color:yellow;
+}
+
+.admin {
+    color: #595959;
+    margin-top: 18px;
+    padding-left:33.33em;
+
+}

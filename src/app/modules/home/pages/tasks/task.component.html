@@ -1,0 +1,38 @@
+
+<div class="flex-container"  fxLayout.xs="column" fxLayoutWrap fxLayout="0.5%" fxLayoutAlign="center">
+    <div class="col-12 col-md-3">
+        <div class="card-picture" *ngFor="let task of tasks">
+          <a mat-list-item [routerLink]="task.nbrItems > 0 ? task.route : null" [style.opacity]="getOpacity(task)" [style.pointerEvents]="'auto'">
+        <span *ngIf="!task.subTasks" fxLayout.gt-xs="row" fxLayout.xs="column">
+        <img mat-card-image class="abcx1" src="assets/images/shape-2.svg" >
+            <div matLine class="link__title-bar1">
+              <h3>{{ task.title }}</h3>
+            </div></span>
+
+          </a>
+
+          <span [hidden]="!isLoading">
+              <fa-icon icon="asterisk" size="3x" [spin]="true"></fa-icon>
+            </span>
+            </div>
+        </div>
+
+
+    <div class="card-picture col-12 col-md-3" *ngFor="let task of tasks[1].subTasks">
+            <div *ngIf='task.nbrItems === 10'>
+                <a mat-list-item [routerLink]="task.nbrItems > 0 ? task.route : null" [style.opacity]="getOpacity(task)" [style.pointerEvents]="'auto'">
+                <span fxLayout.gt-xs="row" fxLayout.xs="column">
+                    <img mat-card-image class="abcx1" src="assets/images/group12.svg">
+                    <div matLine class="link__title-bar1">
+                      <h3>{{ task.title }}</h3>
+                    </div></span></a>
+                    <span [hidden]="!isLoading">
+                        <fa-icon icon="asterisk" size="3x" [spin]="true"></fa-icon>
+                      </span>
+              </div>
+        </div>
+
+
+
+
+

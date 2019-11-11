@@ -1,0 +1,86 @@
+<ng-container *ngIf="!loading">
+  <div class="gray doc-wrapper">
+    <div class="doc-col-m">
+      <h2 class='mat-h2'>Document:</h2>
+      <!-- <img [src]="resultData.pdf" alt="Document image"> -->
+      <div class="pdf-container">
+        <ng-container *ngIf="base64PNGs">
+          <div class="zoom-div">
+            <button mat-raised-button color="primary" (click)="imgZoom()">
+              <mat-icon [innerHtml]="imgClicked ? 'zoom_out' : 'zoom_in'"></mat-icon><span [innerHtml]="imgClicked ? 'Zoom out' : 'Zoom in'"></span>
+            </button>
+          </div>
+          <div *ngFor="let image of base64PNGs">
+            <img class="png zoom-img" [src]="displayImage(image)" [ngStyle]="!imgClicked && {'width': '550px'}"/>
+          </div>
+          <!-- </div> -->
+
+    <div class="doc-col-s sticky-col">
+      <h2 class='mat-h2'>JSON:</h2>
+      <mat-slide-toggle class="show-detailed" [checked]="isDetailed" [(ngModel)]="isDetailed">Show detailed</mat-slide-toggle>
+      <div class="text-box">
+        <ngx-json-viewer *ngIf="!isDetailed" [json]="simplifiedJson"></ngx-json-viewer>
+        <ngx-json-viewer *ngIf="isDetailed" [json]="resultJson"></ngx-json-viewer>
+      </div>
+      <div class="btn-div" *ngIf="!isReviewed">
+          <form [formGroup]="resultsCheckingForm">
+            <mat-radio-group formControlName="jsonRating">
+              <tr class="row">
+                <td>
+                  <mat-radio-button value="Full_Pass" class="weight-radio-btn rbtn-pass">
+                    Full Pass
+                  </mat-radio-button>
+                </td>
+                <td>
+                  <mat-radio-button value="Pass_Typo" class="weight-radio-btn rbtn-pass">
+                    Pass Typo
+                  </mat-radio-button>
+                </td>
+              </tr>
+              <tr class="row">
+                <td>
+                  <mat-radio-button value="Partial_Pass" class="weight-radio-btn rbtn-pass-typos">
+                    Partial Pass
+                  </mat-radio-button>
+                </td>
+                  <td>
+                    <mat-checkbox class="rbtn-pass-typos" name="Pass_Name" (change)="onCheckboxChange($event)" *ngIf="!cbDisabled">Pass Name</mat-checkbox>
+                  </td>
+                  <td>
+                    <mat-checkbox class="rbtn-pass-typos" name="Pass_SSN" (change)="onCheckboxChange($event)" *ngIf="!cbDisabled">Pass SSN</mat-checkbox>
+                  </td>
+              </tr>
+              <tr class="row">
+                <td>
+                  <mat-radio-button value="Page_Issue" class="weight-radio-btn rbtn-na">
+                    Page Issue
+                  </mat-radio-button>
+                </td>
+                <td>
+                  <mat-radio-button value="Doc_Issue" class="weight-radio-btn rbtn-na">
+                    Doc Issue
+                  </mat-radio-button>
+                </td>
+                <td>
+                  <mat-radio-button value="Fail" class="weight-radio-btn rbtn-fail">
+                    Fail
+                  </mat-radio-button>
+                </td>
+              </tr>
+            </mat-radio-group>
+            <mat-form-field *ngIf="resultsCheckingForm.value.jsonRating == 'Partial_Pass' ||
+              resultsCheckingForm.value.jsonRating == 'Fail'">
+              <input #failReasonsInput matInput placeholder="Please enter any comment you may have:"
+                formControlName="failReasons" tabindex="1" autofocus />
+            </mat-form-field>
+            <button mat-raised-button color="basic" class="submit-btn float-btn exit" (click)="exit()">Back</button>
+            <button mat-raised-button color="primary" class="submit-btn float-btn submit" (click)="submit()" [disabled]="!resultsCheckingFormIsValid">Submit</button>
+            <span *ngIf="formSubmitted" class="alert" [innerHTML]="submitSuccess ? 'Submitted.' : 'Error'"></span>
+          </form>
+      </div>
+      <div class="reviewed-back-button" *ngIf="isReviewed">
+          <button mat-raised-button color="basic" class="submit-btn float-btn exit" (click)="exit()">Back</button>
+      </div>
+    </div>
+ 
+</ng-container>
